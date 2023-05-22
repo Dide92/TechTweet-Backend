@@ -4,11 +4,10 @@ const dotenv = require("dotenv")
 const mongoose = require("mongoose")
 
 const PORT = process.env.PORT || 7000
-const authRoute = require("./routes/auth")
+const tweetRoute = require("./routes/tweets")
 
 dotenv.config()
 app.use(express.json())
-
 
 
 mongoose
@@ -21,7 +20,7 @@ mongoose
 .catch((err)=> console.log(err));
 
 
-app.use("/api/auth", authRoute);
+app.use("/api/tweets", tweetRoute);
 
 
 app.listen(PORT, ()=> {
