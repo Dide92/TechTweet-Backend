@@ -1,17 +1,32 @@
 const router = require("express").Router()
 const Tweet = require("../models/Tweet");
+// const User = require("../models/User")
 
-//CREATE
+//GET
 
-router.post("/new", async (req, res) => {
-    const newTweet = await new Tweet(req.body);
+router.get('/', async (req, res) => {
     try{
-        res.status(200).json(newTweet)
-    }catch(err){
+        const getTweet = await Tweet.find({});
+        res.status(200).json(getTweet)
+    }catch(err) {
         res.status(500).json(err)
     }
 })
 
+
+//CREATE
+
+router.post('/new', async (req, res) => {
+    try {
+      const createdTweet = await Tweet.create(req.body);
+      console.log(createdTweet);
+      res.status(200).json(createdTweet);
+    } catch (error) {
+      console.log(error, "THIS IS THE ERROR");
+      res.status(500).json(error);
+    }
+  });
+  
 //UPDATE
 
 router.put("/:id", async (req, res) => {

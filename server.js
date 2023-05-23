@@ -9,7 +9,7 @@ const tweetRoute = require("./routes/tweets")
 dotenv.config()
 app.use(express.json())
 
-
+mongoose.set('strictQuery', true);
 mongoose
 .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
