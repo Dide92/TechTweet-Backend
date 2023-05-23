@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const Tweet = require("../models/Tweet");
-// const User = require("../models/User")
 
 //GET
 
@@ -43,5 +42,23 @@ router.put("/:id", async (req, res) => {
     }
 
   });
+
+  //DELETE
+
+  router.delete("/:id", async (req, res) => {
+    try {
+      const deleteTweet = await Tweet.findById(req.params.id);
+      try {
+        const deletedTweet = await Tweet.findByIdAndDelete(req.params.id, req.body, {new: true});
+        res.status(200).json(deletedTweet);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+
+  });
+  
   
 module.exports = router
