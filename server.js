@@ -8,6 +8,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 7000
 const tweetRoute = require("./routes/tweets")
 const authRoute = require("./routes/auth")
+const usersRoute = require("./routes/users")
 
 dotenv.config()
 app.use(express.json())
@@ -26,6 +27,7 @@ mongoose
 
 app.use("/api/tweets", tweetRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/users", usersRoute);
 
 app.listen(PORT, ()=> {
     console.log('app is running on port: ', PORT)
