@@ -49,7 +49,7 @@ router.put("/:id", async (req, res) => {
     try {
       const deleteTweet = await Tweet.findById(req.params.id);
       try {
-        const deletedTweet = await Tweet.findByIdAndDelete(req.params.id, req.body, {new: true});
+        const deletedTweet = await Tweet.findByIdAndDelete({_id: req.params.id}, req.body, {new: true});
         res.status(200).json(deletedTweet);
       } catch (err) {
         res.status(500).json(err);
