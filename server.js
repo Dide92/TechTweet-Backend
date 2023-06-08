@@ -15,6 +15,7 @@ app.use(express.json())
 app.use(cors({
     origin: 'https://tech-tweet-frontend.herokuapp.com/'
   }));
+app.options('*', cors()) 
 
 mongoose.set('strictQuery', true);
 mongoose
