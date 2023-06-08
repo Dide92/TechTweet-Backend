@@ -12,7 +12,9 @@ const tweetRoute = require("./routes/tweets")
 
 dotenv.config()
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+    origin: 'https://tech-tweet-frontend.herokuapp.com/'
+  }));
 
 mongoose.set('strictQuery', true);
 mongoose
