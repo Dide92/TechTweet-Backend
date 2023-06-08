@@ -14,6 +14,8 @@ dotenv.config()
 app.use(express.json())
 app.use(cors({
     origin: 'https://tech-tweet-frontend.herokuapp.com'
+    // origin:'http://localhost:3000'
+    
   }));
 app.options('*', cors()) 
 
