@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
     res.status(201).json("User has been created: " + user);
   } catch (err) {
     if (err.code === 11000) {
-\      res.status(400).json("Username already exists");
+    res.status(400).json("Username already exists");
     } else {
       res.status(500).json(err);
     }
